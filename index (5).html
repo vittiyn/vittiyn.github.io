@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Tamo</title>
+<style>
+  body {
+    background-image: url('https://example.com/coracoes.jpg'); /* Substitua 'https://example.com/coracoes.jpg' pela URL da sua imagem de fundo com corações */
+    background-repeat: repeat; /* Isso faz com que a imagem de fundo seja repetida */
+    color: #641f5e; /* Cor de texto mais suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais delicada */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Impede a barra de rolagem */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Adicionado para que o botão 'Não' se mova em relação a este contêiner */
+  }
+  
+  .box {
+    background-color: rgba(255, 255, 255, 0.7); /* Cor da caixa mais suave */
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 24px; /* Tamanho de fonte maior */
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 2px solid #641f5e; /* Cor da borda dos botões */
+    border-radius: 5px;
+    background-color: #fff; /* Cor de fundo dos botões */
+    color: #641f5e; /* Cor do texto dos botões */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 150px; /* Largura fixa para os botões */
+    margin: 10px; /* Adicionado margem entre os botões */
+  }
+  
+  .btn:hover {
+    background-color: #641f5e; /* Cor de fundo dos botões ao passar o mouse */
+    color: #fff; /* Cor do texto dos botões ao passar o mouse */
+  }
+
+  #no-btn {
+    margin-top: auto; /* Alinha o botão "Não" para baixo */
+  }
+
+  .sad-face, .heart {
+    position: absolute;
+    font-size: 24px;
+    pointer-events: none; /* Impede que os elementos sejam clicáveis */
+  }
+
+  .image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px; /* Aumenta a margem inferior da imagem */
+    border-radius: 10px; /* Adiciona borda arredondada à imagem */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+    <h1>JULIA VC QUER PASSAR A VIDA AO MEU LADO?</h1>
+    <img src="https://scontent.fbnu1-1.fna.fbcdn.net/v/t39.30808-6/432779652_1459537961628205_1080215711450016812_n.jpg?stp=dst-jpg_p526x296&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=AX96txOgaVgAX9e6DhT&_nc_ht=scontent.fbnu1-1.fna&oh=00_AfC00f0RSfDoddylaMsw6xgZb8xr1wvzR3wXwsofIatuHA&oe=66021062" alt="Julia e Você" class="image"> <!-- Imagem mais relacionada ao romance -->
+    <button id="yes-btn" class="btn">Sim</button>
+    <button id="no-btn" class="btn">Não</button>
+  </div>
+</div>
+
+<script>
+  const noButton = document.getElementById('no-btn');
+
+  // Função para criar carinhas tristes
+  function createSadFace() {
+    const sadFace = document.createElement('div');
+    sadFace.textContent = ';-;';
+    sadFace.classList.add('sad-face');
+    const posX = Math.random() * window.innerWidth;
+    const posY = Math.random() * window.innerHeight;
+    sadFace.style.left = posX + 'px';
+    sadFace.style.top = posY + 'px';
+    document.body.appendChild(sadFace);
+
+    // Remove as carinhas tristes após um curto período
+    setTimeout(() => {
+      sadFace.remove();
+    }, 1000); // Tempo de 1 segundo para a carinha triste desaparecer
+  }
+
+  // Função para criar coração
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.textContent = '♡';
+    heart.classList.add('heart');
+    const posX = Math.random() * window.innerWidth;
+    const posY = Math.random() * window.innerHeight;
+    heart.style.left = posX + 'px';
+    heart.style.top = posY + 'px';
+    document.body.appendChild(heart);
+
+    // Remove o coração após um curto período
+    setTimeout(() => {
+      heart.remove();
+    }, 1000); // Tempo de 1 segundo para o coração desaparecer
+  }
+
+  // Adiciona um event listener para o botão 'Não'
+  noButton.addEventListener('click', () => {
+    // Cria 50 carinhas tristes para uma explosão
+    for (let i = 0; i < 50; i++) {
+      createSadFace();
+    }
+  });
+
+  // Adiciona um event listener para o botão 'Sim' para redirecionar para o link fornecido após 1,5 segundos
+  document.getElementById('yes-btn').addEventListener('click', function() {
+    setTimeout(() => {
+      window.open('https://www.youtube.com/watch?v=xnv9_IqY3g4&ab_channel=BlackAlien', '_blank');
+    }, 1500); // Tempo de espera de 1,5 segundos
+    // Cria uma explosão de corações após 1 segundo
+    setTimeout(() => {
+      for (let i = 0; i < 50; i++) {
+        createHeart();
+      }
+    }, 1000); // Tempo de espera de 1 segundo
+  });
+</script>
+
+</body>
+
